@@ -21,8 +21,6 @@ export class FullScreenComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('FullScreen');
-
     var map = new mapboxgl.Map({
       container: 'mapa',
       // Recordar ponerle un width y height al elemento contenedor del mapa para poder visualizarlo
