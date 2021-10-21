@@ -5,9 +5,6 @@ import { Component, OnInit } from '@angular/core';
 // Importo toda la librería (*) mapbox-gl y le pongo el alias mapboxgl
 import * as mapboxgl from 'mapbox-gl';
 
-// El token necesario para usar la librería lo he guardado en las variables de entorno de Angular, tanto en desarrollo como en producción
-import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-full-screen',
   templateUrl: './full-screen.component.html',
@@ -24,13 +21,15 @@ export class FullScreenComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // (mapboxgl as any) es un truco para saltarme el tipado que viene por defecto de mapboxgl y que TypeScript no se queje
-    (mapboxgl as any).accessToken = environment.mapboxToken;
+    console.log('FullScreen');
 
     var map = new mapboxgl.Map({
       container: 'mapa',
       // Recordar ponerle un width y height al elemento contenedor del mapa para poder visualizarlo
       style: 'mapbox://styles/mapbox/streets-v11',
+      // longitud y después latitud, al revés que GoogleMaps
+      center: [-1.0733545057455198, 37.97249156714781],
+      zoom: 18,
     });
   }
 }
